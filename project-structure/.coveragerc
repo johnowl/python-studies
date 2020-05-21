@@ -1,0 +1,7 @@
+[run]
+branch = True
+omit =
+    */*_test.py
+
+[report]
+fail_under = 70.0
