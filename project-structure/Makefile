@@ -1,10 +1,11 @@
 # https://docs.aws.amazon.com/pt_br/lambda/latest/dg/python-package.html
 
 init:
-	pip3 install --target ./package -r requirements.txt
+	python3 -m venv venv; source venv/bin/activate; pip install -r requirements.txt
 
-test:
-	python3 -m unittest discover -s ./src/test/python -p '*_test.py'
+test: init
+	coverage run -m unittest discover -s ./src/test/python -p '*_test.py'
+	coverage report -m
 
 clean_cache:
 	# Foi preciso escapar o $ para o make não interpretar como uma variável
