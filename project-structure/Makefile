@@ -1,3 +1,5 @@
+# https://docs.aws.amazon.com/pt_br/lambda/latest/dg/python-package.html
+
 init:
 	pip3 install --target ./package -r requirements.txt
 
