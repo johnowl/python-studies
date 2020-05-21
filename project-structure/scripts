@@ -8,9 +8,13 @@ function init() {
   pip install -r requirements.txt
 }
 
+function checkstyle() {
+    pep8 src/main/*
+}
 
 function test() {
   init
+  checkstyle
   coverage run -m unittest discover -s ./src/test/python -p '*_test.py'
   coverage report -m
 }
@@ -26,7 +30,6 @@ function package_dependencies() {
 }
 
 function package() {
-  init
   test
   clean_cache
   package_dependencies

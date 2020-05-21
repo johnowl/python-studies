@@ -7,6 +7,9 @@ test: init
 	coverage run -m unittest discover -s ./src/test/python -p '*_test.py'
 	coverage report -m
 
+checkstyle:
+	pep8 src/main/*
+
 clean_cache:
 	# Foi preciso escapar o $ para o make não interpretar como uma variável
 	find . | grep -E "(__pycache__|\.pyc|\.pyo$$)" | xargs rm -rf
@@ -14,7 +17,7 @@ clean_cache:
 package_dependencies:
 	cd venv/lib/python3.*/site-packages; zip -r9 ../../../../function.zip . 2>/dev/null || :
 
-package: init test clean_cache package_dependencies
+package: init checkstyle test clean_cache package_dependencies
 	mkdir -p deploy/src/main/
 	cp -R src/main/* deploy/src/main/
 	cd deploy/; zip -r ../function.zip .
