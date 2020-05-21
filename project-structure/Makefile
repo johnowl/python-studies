@@ -19,3 +19,9 @@ package: init test clean_cache package_dependencies
 	cp -R src/main/* deploy/src/main/
 	cd deploy/; zip -r ../function.zip .
 	rm -rf deploy
+
+terraform_plan:
+	terraform plan
+
+terraform_apply:
+	terraform apply
