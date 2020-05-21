@@ -9,6 +9,3 @@ class HelloServiceTest(unittest.TestCase):
         message = service.say_hello()
         self.assertEqual(message, 'Hello world')
 
-
-if __name__ == '__main__':
-    unittest.main()
