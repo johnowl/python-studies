@@ -32,10 +32,10 @@ function package() {
     package_dependencies()
 
     mkdir -p deploy/src/main/
-	  cp -R src/main/* deploy/src/main/
-	  cd deploy/
-	  zip -r ../function.zip .
-	  rm -rf deploy
+    cp -R src/main/* deploy/src/main/
+    cd deploy/
+    zip -r ../function.zip .
+    rm -rf deploy
 }
 
 function terraform_plan() {
