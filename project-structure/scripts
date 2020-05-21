@@ -3,20 +3,20 @@
 # para usar essas funções no script de build basta executar o comando `source scripts`
 
 function init() {
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+  python3 -m venv venv
+  source venv/bin/activate
+  pip install -r requirements.txt
 }
 
 
 function test() {
   init()
   coverage run -m unittest discover -s ./src/test/python -p '*_test.py'
-	coverage report -m
+  coverage report -m
 }
 
 function clean_cache() {
-    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+  find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }
 
 function package_dependencies() {
@@ -26,22 +26,22 @@ function package_dependencies() {
 }
 
 function package() {
-    init()
-    test()
-    clean_cache()
-    package_dependencies()
+  init()
+  test()
+  clean_cache()
+  package_dependencies()
 
-    mkdir -p deploy/src/main/
-    cp -R src/main/* deploy/src/main/
-    cd deploy/
-    zip -r ../function.zip .
-    rm -rf deploy
+  mkdir -p deploy/src/main/
+  cp -R src/main/* deploy/src/main/
+  cd deploy/
+  zip -r ../function.zip .
+  rm -rf deploy
 }
 
 function terraform_plan() {
-    terraform plan
+  terraform plan
 }
 
 function terraform_apply() {
-    terraform apply
+  terraform apply
 }
