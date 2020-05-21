@@ -10,7 +10,7 @@ function init() {
 
 
 function test() {
-  init()
+  init
   coverage run -m unittest discover -s ./src/test/python -p '*_test.py'
   coverage report -m
 }
@@ -26,10 +26,10 @@ function package_dependencies() {
 }
 
 function package() {
-  init()
-  test()
-  clean_cache()
-  package_dependencies()
+  init
+  test
+  clean_cache
+  package_dependencies
 
   mkdir -p deploy/src/main/
   cp -R src/main/* deploy/src/main/
