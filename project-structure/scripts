@@ -25,7 +25,7 @@ function clean_cache() {
 
 function package_dependencies() {
   # https://docs.aws.amazon.com/pt_br/lambda/latest/dg/python-package.html
-  cd venv/lib/python3.*/site-packages
+  cd venv/lib/python3.*/site-packages || exit
   zip -r9 ../../../../function.zip . 2>/dev/null || :
 }
 
