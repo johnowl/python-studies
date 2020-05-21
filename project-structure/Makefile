@@ -12,9 +12,10 @@ clean_cache:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo$$)" | xargs rm -rf
 
 package_dependencies:
-	cd package; zip -r9 ../function.zip . 2>/dev/null || :
+	cd venv/lib/python3.*/site-packages; zip -r9 ../../../../function.zip . 2>/dev/null || :
 
 package: init test clean_cache package_dependencies
 	mkdir -p deploy/src/main/
 	cp -R src/main/* deploy/src/main/
 	cd deploy/; zip -r ../function.zip .
+	rm -rf deploy
